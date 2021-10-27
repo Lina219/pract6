@@ -37,86 +37,55 @@ namespace pract5
         {
             if (person1.IsChecked == true)
             {
-                if (имя.Text != string.Empty)
-                {
-                    he.Name = имя.Text;
-                }
-
-                if (пол.SelectedIndex == 0)
-                {
-                    he.Sex = "мужской";
-                }
-                if (пол.SelectedIndex == 1)
-                {
-                    he.Sex = "женский";
-                }
-
-                if (Int32.TryParse(возраст.Text, out int howOld))
-                {
-                    if (howOld < 0)
-                    {
-                        MessageBox.Show("Возраст не может быть отрицательным");
-                    }
-                    else
-                    {
-                        she.HowOld = howOld;
-                    }
-                }
-
-                if (Int32.TryParse(вес.Text, out int weight))
-                {
-                    if (weight < 0)
-                    {
-                        MessageBox.Show("Вес не может быть отрицательным");
-                    }
-                    else
-                    {
-                        she.Weight = weight;
-                    }
-                }
+                FillInformation(he);
             }
 
             if (person2.IsChecked == true)
             {
-                if (имя.Text != string.Empty)
-                {
-                    she.Name = имя.Text;
-                }
-
-                if (пол.SelectedIndex == 0)
-                {
-                    she.Sex = "мужской";
-                }
-                if (пол.SelectedIndex == 1)
-                {
-                    she.Sex = "женский";
-                }
-
-                if (Int32.TryParse(возраст.Text, out int howOld))
-                {
-                    if (howOld < 0)
-                    {
-                        MessageBox.Show("Возраст не может быть отрицательным");
-                    }
-                    else
-                    {
-                        she.HowOld = howOld;
-                    }
-                }
-
-                if (Int32.TryParse(вес.Text, out int weight))
-                {
-                    if (weight < 0)
-                    {
-                        MessageBox.Show("Вес не может быть отрицательным");
-                    }
-                    else
-                    {
-                        she.Weight = weight;
-                    }
-                }
+                FillInformation(she);
             }
             TextBox.Text = he.ShowInformation() +"\n\n" + she.ShowInformation();
+        }
+
+        private void FillInformation(Man somebody)
+        {
+            if (имя.Text != string.Empty)
+            {
+                somebody.Name = имя.Text;
+            }
+
+            if (пол.SelectedIndex == 0)
+            {
+                somebody.Sex = "мужской";
+            }
+            if (пол.SelectedIndex == 1)
+            {
+                somebody.Sex = "женский";
+            }
+
+            if (Int32.TryParse(возраст.Text, out int howOld))
+            {
+                if (howOld < 0)
+                {
+                    MessageBox.Show("Возраст не может быть отрицательным");
+                }
+                else
+                {
+                    somebody.HowOld = howOld;
+                }
+            }
+
+            if (Int32.TryParse(вес.Text, out int weight))
+            {
+                if (weight < 0)
+                {
+                    MessageBox.Show("Вес не может быть отрицательным");
+                }
+                else
+                {
+                    somebody.Weight = weight;
+                }
+            }
         }
 
         private void выход_Click(object sender, RoutedEventArgs e)
@@ -134,15 +103,12 @@ namespace pract5
             if (person1.IsChecked == true)
             {
                 he++;
-                //возраст.Text = Convert.ToString(he.HowOld);
                 возраст.Text = he.HowOld.ToString();
-                //TextBox.Text = he.ShowInformation();
             }
             if (person2.IsChecked == true)
             {
                 she++;
-                возраст.Text = Convert.ToString(she.HowOld);
-                //TextBox.Text = she.ShowInformation();
+                возраст.Text = she.HowOld.ToString();
             }
         }
 
